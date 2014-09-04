@@ -1,3 +1,21 @@
+# Traverse up in directory tree to find containing folder.
+gwm_find_up() {
+  local path
+  path=$1
+  while [ "$path" != "" ] && [ ! -d "$path/$2" ]; do
+    path=${path%/*}
+  done
+  echo "$path"
+}
+
+gwm_find_src() {
+  local dir
+  dir="$(gwm_find_up $1 'src')"
+  if [ -e "$dir/src" ]; then
+    echo "$dir/src"
+  fi
+}
+
 gwm() {
     case $1 in
     "help" )
@@ -5,13 +23,14 @@ gwm() {
         echo "Go Workspance Manager"
         echo
         echo "Usage:"
+        echo
         echo "    gwm help                    Show this message"
-        echo "    gwm work                    Set the current directory as the Go workspace"
-        echo "    gwm link                    TODO: Link an external source repository into this workspace"
+        echo "    gwm use                     Set the current directory as the Go workspace"
+        echo "    gwm link                    Link an external source repository into this workspace"
         echo
     ;;
 
-    "work" )
+    "use" )
         mkdir -p $(pwd)/bin
         mkdir -p $(pwd)/src
         export GOPATH=$(pwd)
@@ -19,6 +38,37 @@ gwm() {
 
         echo
         echo "Go workspace set to $GOPATH"
+        echo
+    ;;
+
+    "link" )
+        if [ -z $2 ]; then
+            echo
+            echo "You must provide a path to a module"
+            echo
+            return 0
+        fi
+        local wPath
+        wPath=$(gwm_find_src $PWD)
+        if [ $wPath == "/src" ]; then
+            echo
+            echo "This command must be run in a Go workspace"
+            echo
+            return 0
+        fi
+        rPath=$(gwm_find_src $2)
+        if [ $rPath == "/src" ]; then
+            echo
+            echo "Could not find a Go module at $2"
+            echo
+            return 0
+        fi
+        mPath=${2#$rPath} # Remove the root path so we have just the module path.
+        mkdir -p $wPath${mPath%/*} # Make the directory path without the last item.
+        ln -s -f $2 $wPath$mPath # Symlink the module into the current workspace.
+
+        echo
+        echo "Linked module $mPath"
         echo
     ;;
     esac

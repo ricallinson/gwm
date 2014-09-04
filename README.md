@@ -1,6 +1,6 @@
 # Go Workspace Manager
 
-Super simple Go workspace manager.
+Super simple workspace manager for the Go programming language.
 
 ## Manual Install
 
@@ -13,3 +13,5 @@ Or if you have git installed, then just clone it:
 To activate gwm, you need to source it from your shell:
 
     source ~/.gwm/gwm.sh
+
+I always add this line to my _~/.bashrc_, _~/.profile_, or _~/.zshrc_ file to have it automatically sourced upon login.
