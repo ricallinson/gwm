@@ -44,7 +44,7 @@ gwm() {
     "link" )
         if [ -z $2 ]; then
             echo
-            echo "You must provide a path to a module"
+            echo "You must provide a path to a Go module"
             echo
             return 0
         fi
