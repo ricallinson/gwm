@@ -26,6 +26,7 @@ gwm() {
         echo
         echo "    gwm help                    Show this message"
         echo "    gwm use                     Set the current directory as the Go workspace"
+        echo "    gwm current                 Display currently activated workspace directory"
         echo "    gwm link                    Link an external source repository into this workspace"
         echo
     ;;
@@ -36,6 +37,12 @@ gwm() {
         export GOPATH=$(pwd)
         export PATH=$PATH:$GOPATH/bin
 
+        echo
+        echo "Go workspace set to $GOPATH"
+        echo
+    ;;
+
+    "current" )
         echo
         echo "Go workspace set to $GOPATH"
         echo
