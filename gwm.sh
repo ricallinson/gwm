@@ -32,9 +32,18 @@ gwm() {
     ;;
 
     "use" )
-        mkdir -p $(pwd)/bin
-        mkdir -p $(pwd)/src
-        export GOPATH=$(pwd)
+        local wPath
+        wPath=$(gwm_find_src $PWD)
+        wPath=${wPath%/*}
+        if [ -z $wPath ]; then
+            echo
+            echo "This command must be run in a Go workspace"
+            echo
+            return 0
+        fi
+        mkdir -p $wPath/bin
+        mkdir -p $wPath/src
+        export GOPATH=$wPath
         export PATH=$PATH:$GOPATH/bin
 
         echo
