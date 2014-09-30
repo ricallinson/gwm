@@ -22,11 +22,20 @@ gwm_resolve()
     echo "`pwd -P`" # output full, link-resolved path
 }
 
+gwm_gvm_use() {
+    if hash gvm 2>/dev/null; then
+        local version
+        version=$(gvm list 2>&1 | tail -2 | sed 's/[^a-z0-9.]*//g')
+        echo 
+        gvm use $version
+    fi
+}
+
 gwm() {
     case $1 in
     "help" )
         echo
-        echo "Go Workspance Manager"
+        echo "Go Workspace Manager"
         echo
         echo "Usage:"
         echo
@@ -34,6 +43,7 @@ gwm() {
         echo "    gwm use                     Set the current directory as the Go workspace"
         echo "    gwm current                 Display currently activated workspace directory"
         echo "    gwm link                    Link an external source repository into this workspace"
+        echo "    gwm version                 The version of Go Workspace Manager installed"
         echo
     ;;
 
@@ -54,17 +64,24 @@ gwm() {
         fi
         mkdir -p $wPath/bin
         mkdir -p $wPath/src
+        gwm_gvm_use
         export GOPATH=$wPath
         export PATH=$PATH:$GOPATH/bin
 
         echo
-        echo "Go workspace set to $GOPATH"
+        echo "Workspace set to $GOPATH"
         echo
     ;;
 
     "current" )
         echo
-        echo "Go workspace set to $GOPATH"
+        echo "Workspace set to $GOPATH"
+        echo
+    ;;
+
+    "version" )
+        echo
+        echo "Go Workspace Manager v0.0.1"
         echo
     ;;
 
