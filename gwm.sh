@@ -16,6 +16,12 @@ gwm_find_src() {
   fi
 }
 
+gwm_resolve()
+{
+    cd "$1" 2>/dev/null || return $?  # cd to desired directory; if fail, quell any error messages but return exit status
+    echo "`pwd -P`" # output full, link-resolved path
+}
+
 gwm() {
     case $1 in
     "help" )
@@ -33,8 +39,13 @@ gwm() {
 
     "use" )
         local wPath
-        wPath=$(gwm_find_src $PWD)
-        wPath=${wPath%/*}
+        if [ -z $2 ]; then
+            wPath=$(gwm_find_src $PWD)
+            wPath=${wPath%/*}
+        else
+            wPath="`gwm_resolve \"$2\"`"
+            echo $wPath
+        fi
         if [ -z $wPath ]; then
             echo
             echo "This command must be run in a Go workspace"
