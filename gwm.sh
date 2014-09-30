@@ -54,7 +54,6 @@ gwm() {
             wPath=${wPath%/*}
         else
             wPath="`gwm_resolve \"$2\"`"
-            echo $wPath
         fi
         if [ -z $wPath ]; then
             echo
