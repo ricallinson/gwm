@@ -4,7 +4,7 @@ Super simple workspace manager for the Go programming language.
 
 ## Manual Install
 
-For manual install create a folder somewhere in your filesystem with the gwm.sh file inside it. I put mine in a folder called _.gwm_.
+For manual install create a folder somewhere in your filesystem with the gwm.sh file inside it. I put mine in a folder called _~/.gwm_.
 
 Or if you have git installed, then just clone it:
 
