@@ -18,30 +18,30 @@ I always add this line to my _~/.bashrc_, _~/.profile_, or _~/.zshrc_ file to ha
 
 ## Usage
 
-Show this message.
-
     gwm help
 
-Sets the given directory as the Go workspace it finds existing `bin` and `src` directories. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
+Show this message.
 
     gwm use ~/some/dir
 
-Sets the current directory as the Go workspace creating `bin` and `src` directories if not found. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
+Sets the given directory as the Go workspace it finds existing `bin` and `src` directories. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
 
     gwm use .
 
-Walks up the directory structure until it finds an existing Go workspace defined by having `bin` and `src` directories. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
+Sets the current directory as the Go workspace creating `bin` and `src` directories if not found. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
 
     gwm use
 
-Display currently activated workspace directory.
+Walks up the directory structure until it finds an existing Go workspace defined by having `bin` and `src` directories. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
 
     gwm current
 
-Link an external source repository into this workspace.
+Display currently activated workspace directory.
 
     gwm link ~/path/to/go/module
 
-The version of Go Workspace Manager installed.
+Link an external source repository into this workspace.
 
     gwm version
+
+The version of Go Workspace Manager installed.
