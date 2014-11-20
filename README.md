@@ -20,7 +20,7 @@ I always add this line to my _~/.bashrc_, _~/.profile_, or _~/.zshrc_ file to ha
 
     gwm help
 
-Show this message.
+Show the commands help message.
 
     gwm use ~/some/dir
 
