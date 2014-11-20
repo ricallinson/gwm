@@ -15,3 +15,33 @@ To activate gwm, you need to source it from your shell:
     source ~/.gwm/gwm.sh
 
 I always add this line to my _~/.bashrc_, _~/.profile_, or _~/.zshrc_ file to have it automatically sourced upon login.
+
+## Usage
+
+Show this message.
+
+    gwm help
+
+Sets the given directory as the Go workspace it finds existing `bin` and `src` directories. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
+
+    gwm use ~/some/dir
+
+Sets the current directory as the Go workspace creating `bin` and `src` directories if not found. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
+
+    gwm use .
+
+Walks up the directory structure until it finds an existing Go workspace defined by having `bin` and `src` directories. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
+
+    gwm use
+
+Display currently activated workspace directory.
+
+    gwm current
+
+Link an external source repository into this workspace.
+
+    gwm link ~/path/to/go/module
+
+The version of Go Workspace Manager installed.
+
+    gwm version
