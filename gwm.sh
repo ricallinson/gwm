@@ -39,14 +39,14 @@ gwm() {
         echo "Usage:"
         echo
         echo "    gwm help                    Show this message"
-        echo "    gwm use                     Set the current directory as the Go workspace"
+        echo "    gwm here                    Set the current directory as the Go workspace"
         echo "    gwm current                 Display currently activated workspace directory"
         echo "    gwm link                    Link an external source repository into this workspace"
         echo "    gwm version                 The version of Go Workspace Manager installed"
         echo
     ;;
 
-    "use" )
+    "here" )
         local wPath
         if [ -z $2 ]; then
             wPath=$(gwm_find_src $PWD)
