@@ -22,15 +22,15 @@ I always add this line to my _~/.bashrc_, _~/.profile_, or _~/.zshrc_ file to ha
 
 Show the commands help message.
 
-    gwm use ~/some/dir
+    gwm here ~/some/dir
 
 Sets the given directory as the Go workspace it finds existing `bin` and `src` directories. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
 
-    gwm use .
+    gwm here .
 
 Sets the current directory as the Go workspace creating `bin` and `src` directories if not found. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
 
-    gwm use
+    gwm here
 
 Walks up the directory structure until it finds an existing Go workspace defined by having `bin` and `src` directories. If [GVM](https://github.com/moovweb/gvm) is installed the latest version of Go will be made active.
 
