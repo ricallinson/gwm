@@ -38,10 +38,6 @@ Walks up the directory structure until it finds an existing Go workspace defined
 
 Display currently activated workspace directory.
 
-    gwm link ~/path/to/go/module
-
-Link an external source repository into this workspace.
-
     gwm version
 
 The version of Go Workspace Manager installed.
